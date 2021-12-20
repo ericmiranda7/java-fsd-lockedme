@@ -49,6 +49,12 @@ public class UI {
                     }
                     this.fileManager.addFile(splitDetails[0], splitDetails[1], Integer.parseInt(splitDetails[2]));
                     break;
+                case "3":
+                    System.out.println("Name of the file to be deleted: ");
+                    String fileName = this.scanner.nextLine();
+                    if (!fileManager.deleteFile(fileName)) System.out.println("Sorry, the specified file does not exist.");
+                    else System.out.println("File \"" + fileName + "\" deleted successfully.");
+                    break;
                 case "5":
                     System.out.println("Exiting, have a nice day !...");
                     return;

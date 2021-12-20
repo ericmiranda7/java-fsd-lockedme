@@ -27,4 +27,12 @@ public class FileManager {
         // TODO(): Regex for file name validation
         this.files.add(new File(fileName, filePath, size));
     }
+
+    public boolean deleteFile(String fileName) {
+        File tempFile = new File(fileName);
+        if (!this.files.contains(tempFile)) return false;
+
+        this.files.remove(tempFile);
+        return true;
+    }
 }
