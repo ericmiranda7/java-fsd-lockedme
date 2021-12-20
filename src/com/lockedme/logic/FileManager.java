@@ -2,6 +2,7 @@ package com.lockedme.logic;
 
 import com.lockedme.domain.File;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -28,11 +29,10 @@ public class FileManager {
         this.files.add(new File(fileName, filePath, size));
     }
 
-    public boolean deleteFile(String fileName) {
+    public void deleteFile(String fileName) throws FileNotFoundException {
         File tempFile = new File(fileName);
-        if (!this.files.contains(tempFile)) return false;
+        if (!this.files.contains(tempFile)) throw new FileNotFoundException();
 
         this.files.remove(tempFile);
-        return true;
     }
 }

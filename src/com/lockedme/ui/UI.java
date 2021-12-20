@@ -2,6 +2,7 @@ package com.lockedme.ui;
 
 import com.lockedme.logic.FileManager;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class UI {
@@ -52,8 +53,12 @@ public class UI {
                 case "3":
                     System.out.println("Name of the file to be deleted: ");
                     String fileName = this.scanner.nextLine();
-                    if (!fileManager.deleteFile(fileName)) System.out.println("Sorry, the specified file does not exist.");
-                    else System.out.println("File \"" + fileName + "\" deleted successfully.");
+                    try {
+                        fileManager.deleteFile(fileName);
+                        System.out.println("File \"" + fileName + "\" deleted successfully.");
+                    } catch (FileNotFoundException e) {
+                        System.out.println("Sorry, the specified file does not exist.");
+                    }
                     break;
                 case "5":
                     System.out.println("Exiting, have a nice day !...");
