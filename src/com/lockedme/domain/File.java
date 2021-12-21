@@ -15,6 +15,11 @@ public class File {
         this(fileName, "", 0);
     }
 
+    public String getName() {
+        return this.fileName;
+    }
+
+    @Override
     public String toString() {
         return this.fileName;
     }

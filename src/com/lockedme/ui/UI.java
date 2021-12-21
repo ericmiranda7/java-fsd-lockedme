@@ -60,6 +60,14 @@ public class UI {
                         System.out.println("Sorry, the specified file does not exist.");
                     }
                     break;
+                case "4":
+                    System.out.println("Enter name of file to be searched for: ");
+                    try {
+                        System.out.println(this.fileManager.searchFile(this.scanner.nextLine()));
+                    } catch (FileNotFoundException e) {
+                        System.out.println("No results found.");
+                    }
+                    break;
                 case "5":
                     System.out.println("Exiting, have a nice day !...");
                     return;
