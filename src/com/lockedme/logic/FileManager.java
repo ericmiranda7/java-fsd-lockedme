@@ -3,6 +3,7 @@ package com.lockedme.logic;
 import com.lockedme.domain.File;
 
 import java.io.FileNotFoundException;
+import java.nio.file.FileAlreadyExistsException;
 import java.util.*;
 
 public class FileManager {
@@ -27,8 +28,9 @@ public class FileManager {
         return sb.toString();
     }
 
-    public void addFile(String fileName, String filePath, int size) {
+    public void addFile(String fileName, String filePath, int size) throws Exception {
         // TODO(): Regex for file name validation
+        if (this.files.containsKey(fileName)) throw new Exception("A file with the same name already exists!");
         this.files.put(fileName, new File(fileName, filePath, size));
     }
 

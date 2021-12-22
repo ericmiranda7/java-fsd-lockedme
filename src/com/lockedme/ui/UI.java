@@ -48,7 +48,12 @@ public class UI {
                     for (int i = 0; i < splitDetails.length; i++) {
                         splitDetails[i] = splitDetails[i].trim();
                     }
-                    this.fileManager.addFile(splitDetails[0], splitDetails[1], Integer.parseInt(splitDetails[2]));
+                    try {
+                        this.fileManager.addFile(splitDetails[0], splitDetails[1], Integer.parseInt(splitDetails[2]));
+                        System.out.println("File \"" + splitDetails[0] + "\" added successfully !");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case "3":
                     System.out.println("Name of the file to be deleted: ");
