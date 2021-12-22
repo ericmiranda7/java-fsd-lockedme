@@ -45,6 +45,12 @@ public class UI {
                     System.out.println("Please enter [file_name], [file_path] and [file_size] as comma seperated values");
                     String fileDetails = this.scanner.nextLine();
                     String[] splitDetails = fileDetails.split(",");
+
+                    if (splitDetails.length != 3) {
+                        System.out.println("Sorry, please provide input as per the format.");
+                        break;
+                    }
+
                     for (int i = 0; i < splitDetails.length; i++) {
                         splitDetails[i] = splitDetails[i].trim();
                     }
@@ -52,7 +58,8 @@ public class UI {
                         this.fileManager.addFile(splitDetails[0], splitDetails[1], Integer.parseInt(splitDetails[2]));
                         System.out.println("File \"" + splitDetails[0] + "\" added successfully !");
                     } catch (Exception e) {
-                        System.out.println(e.getMessage());
+                        if (e instanceof NumberFormatException) System.out.println("Please enter file size as digits!");
+                        else System.out.println(e.getMessage());
                     }
                     break;
                 case "3":
